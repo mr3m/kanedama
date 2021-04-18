@@ -46,7 +46,7 @@ You're also free to use a component library to get you started and any other pac
 
 Static type checking is a great way to introduce additional level of safety into your code and we welcome solutions written in TypeScript, but JavaScript is good too.
 
-The use of component libraries, like Material UI, might make this easier and quicker for you but keep in mind that using it means we'll have less code to assess your knowledge and Frontend skills. Feel free to use a js chart library if you want too.
+The use of component libraries, like Material UI, might make this easier and quicker for you but keep in mind that using them means we'll have less code to assess your knowledge and Frontend skills.
 
 We expect you to test your code: the minimum requirement is unit tests, end to end tests are a big plus. From our experience Cypress.js works very well for React application testing, but you're free to pick your favourite.
 
