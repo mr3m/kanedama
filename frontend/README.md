@@ -110,8 +110,8 @@ We're interested in your method and how you approach the problem just as much as
 Here's what you should strive for:
 
 - Good use of current HTML, CSS, and JavaScript / TypeScript
-- An keen eye for UX and user-friendly UI, without forgetting accessibility
-- A consistent architecture, focused on the simplicity of the project (**keep it simple!**), a good programmer is a pragmatic programmer, no need to over-engineer things
+- A keen eye for UX and user-friendly UI, without forgetting accessibility
+- A consistent architecture, focused on the simplicity of the project (**keep it simple!**), pragmatism, no over-engineering
 - Extensible code
 - Clean code using proper programming patterns and JavaScript best practices
 
