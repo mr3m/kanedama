@@ -1,58 +1,68 @@
-# :crystal_ball: Mansa Front-end Developer Coding Test
+# :crystal_ball: Mansa Frontend Developer Coding Test
+
+Welcome to Mansa's Frontend technical test! 
 
 Be sure to read **all** of this document carefully, and follow the guidelines within.
 
+## :godmode: About Mansa
+
+At Mansa, we are on a mission to make freelancers workers spend less time on bureaucracies and more time using their money consciously, giving them access to loans with lower interest rates and longer term. To achieve this, we are developing a platform that involves the entire product chain and we aim to become leaders in credit services in Europe.
+
+To face this challenge, we need people who believe in the impact of our business on one country's economy. More than that, we want to work with people who are not content with the obvious, who participate, without being afraid of making mistakes and learning, and who inspire others, with ideas to simplify people's routine.
+
+Good luck! :boom:
+
 ## Context
 
-We need you to create a business user interface where you can see :
+The goal of this test is to create a dashboard-like user interface, where we can find:
 
-- Personal user information
+- User's personal information
   - First & Last name
-- Business user
-  - SIRET
-  - Starting date
-  - Address (Ex: 10 Rue Gabriel Peri 92120 Montrouge)
-- Financial information
+- User's business information
+  - SIRET number
+  - Creation date
+  - Address (example: 10 Rue Gabriel Peri 92120, Montrouge)
+- User's financial information
   - Account type {TRANSACTION / SAVINGS}
   - Current balance
 
-We will not provide you a wireframe to follow or a screenshot of our current dashboard.
-The view is on one, only one, user.
+In order not to influcence your design choices, we will not provide you with a wireframe to follow or a screenshot of our current dashboard.
 
-You will need to leverage an open API for business data to fill in the details and functionality as described below. You are only required to complete desktop views, unless otherwise instructed.
+The view should only be for **one** user.
+
+You will need to leverage an open API for business data to fill in the details and functionality as described below. 
 
 ## Requirements
 
+For simplicity reasons and in order for the test not to be too long to complete, you are only required to develop the page to fit the viewport of the device of your choice : either **mobile** or **desktop**.
+
 ### Tech stack
 
-At Mansa, we're big fans of React. Our stack consists of TypeScript, React.js, Next.Js, CSS-in-JS with styled-component, Flex & Grid, Cypress. We encourage you to solve the task in this stack, if you're comfortable with it. At least, solutions using React are mandatory. create-react-app is a standard option to create a new React project and you are free to use it if you choose to.
+At Mansa, we're big fans of React. Our stack consists of TypeScript, React, [Next.js](https://nextjs.org/), CSS-in-JS with [styled-component](https://styled-components.com/), Flex & Grid, and we test with Jest and Cypress. 
 
-You're also free to use a component library to get you started and any other package that you find required.
+The bare minimum is to complete the task with React. If you're comfortable with it, we encourage you to complete the test in the stack described above.
 
-Static type checking is a great way to introduce additional level of safety into your code and we welcome solutions written in TypeScript, but javascript is good too.
+You're also free to use a component library to get you started and any other package that you might think is necessary.
 
-Despite the above stack, we accept answers using different choices of libraries as long as you keep React.js.
-The use of component libraries, like Material UI, might make this easier for you and is encouraged but keep in mind that using it means we have less code to assess your knowledge. 
-Feel free to use a js chart library if you want too.
+Static type checking is a great way to introduce additional level of safety into your code and we welcome solutions written in TypeScript, but JavaScript is good too.
 
-We like to write clean code using proper programming patterns and JavaScript / Typescript best practices and expect you to strive to do the same.
+The use of component libraries, like Material UI, might make this easier and quicker for you but keep in mind that using them means we'll have less code to assess your knowledge and Frontend skills.
 
-We expect you to provide tests alongside your code. The minimum requirement is that the code will be unit tested. End to end tests are a big plus. From our experience Cypress.js works very well for React application testing, but you're free to pick your favourite.
+We expect you to test your code: the minimum requirement is unit tests, end to end tests are a big plus. From our experience Cypress.js works very well for React application testing, but you're free to pick your favourite.
 
 Remarks:
 
-- Use es6 or later, do not use es5.
-- Do **not** use jquery.
-- Use vanilla css or CSS-in-JS.
+- Use es6 or later, do not use es5
+- Do **not** use jQuery
+- Feel free to use vanilla css, CSS-in-JS, or utility-first libraries
 
 ### SIREN Api
 
-For business information, we'll use the SIREN public API.
-You can find the documentation about it here <https://entreprise.data.gouv.fr/api_doc_sirene>
+For business information, we'll use the SIREN public API, you can find the documentation about it [here](https://entreprise.data.gouv.fr/api_doc/sirene).
 
 We'll use the `unites_legales` object.
 
-The URL is : `https://entreprise.data.gouv.fr/api/sirene/v3/unites_legales/${SIREN}`
+The URL is : `https://entreprise.data.gouv.fr/api/sirene/v3/unites_legales/${SIREN_NUMBER}`
 
 For example : <https://entreprise.data.gouv.fr/api/sirene/v3/unites_legales/833079619>
 
@@ -73,22 +83,21 @@ You can see our backend readme test if you want more information about this endp
 
 ### :confetti_ball: Bonus
 
-- Also create responsive mobile version
-- Write clear **documentation** on how the app was designed and how to run the code.
-- Provide proper e/e tests.
+- Write **clear documentation** on how the app was designed and how to run the code
+- Provide e2e tests
 - Typescript
-- Provide components in [Storybook](https://storybook.js.org) with tests.
 - Beautiful charts
-- Write concise and clear commit messages.
-- Provide an online demo of the application.
-- Include subtle animations to focus attention
+- Write concise and clear commit messages
+- Provide an online demo of the application, in a deployed environment
+- User-friendly and clear UI
 - Complete user information (Profil picture, phone number, etc ...) with another API like [randomuser](https://randomuser.me)
-- Describe optimization opportunities when you conclude
+- Describe optimization opportunities and next steps as you conclude
 
 ### Design
 
-At first I was very relunctant to write this section because I want to give you some freedom on how design this test. But since there is so much people asking me for insight I provide you some draft of design you can do.
-Feel free to make something different and/or improve it !
+The insights below are only here to show the information required and provide a baseline to your design choices and implementations. 
+
+The 2 screenshots below do **not** represent our current dashboard nor the layout we necessarily expect: we provide no constraints regarding the UI and design in general, feel free to implement your own. 
 
 ![Design Draft1](./draft1.png)
 
@@ -96,34 +105,23 @@ Feel free to make something different and/or improve it !
 
 ## What We Care About
 
-Use any libraries that you would normally use if this were a real production App. Please note: we're interested in your code & the way you solve the problem, not how well you can use a particular library or feature.
-
-_We're interested in your method and how you approach the problem just as much as we're interested in the end result._
+We're interested in your method and how you approach the problem just as much as we're interested in the end result.
 
 Here's what you should strive for:
 
-- Good use of current HTML, CSS, and JavaScript / Typescript & performance best practices.
-- Solid testing approach.
-- A consistent architecture, focused on the simplicity of the project (** keep it simple! **)
-- Keep one CSS methodologies like BEM, SMACSS, OOCSS, ITCSS or Atomic CSS.
-- Extensible code.
+- Good use of current HTML, CSS, and JavaScript / TypeScript
+- A keen eye for UX and user-friendly UI, without forgetting accessibility
+- A consistent architecture, focused on the simplicity of the project (**keep it simple!**), pragmatism, no over-engineering
+- Extensible code
+- Clean code using proper programming patterns and JavaScript best practices
 
 ## :gift: The Deliverable
 
-- A bundled/archived repository showing your commit history or a link to an accessible private repository with your work in (Github can host personal private repositories for free). Git example for sending us a standalone bundle:
+- A link to an accessible private repository with your work in (Github can host personal private repositories for free), or a bundled/archived repository showing your commit history. Git example for sending us a standalone bundle:
 
         git bundle create <yourname>.bundle --all
 
-- A README.md file explaining the decisions you've made solving this task including technology and library choices.
-- Any instructions required to run your solution and tests in a unix environment.
-
-## :godmode: About Mansa
-
-At Mansa, we are on a mission to make freelancers workers spend less time on bureaucracies and more time using their money consciously, giving them access to loans with lower interest rates and longer term. To achieve this, we are developing a platform that involves the entire product chain and we aim to become leaders in credit services in Europe.
-
-To face this challenge, we need people who believe in the impact of our business on one country's economy. More than that, we want to work with people who are not content with the obvious, who participate, without being afraid of making mistakes and learning, and who inspire others, with ideas to simplify people's routine.
-
-Good luck! :boom:
+- A README file explaining the decisions you've made solving this task including technology and library choices, and instructions required to run your solution and tests
 
 ## Q&A
 
