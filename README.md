@@ -18,9 +18,9 @@ to simplify people's routine.
 
 We provide you **3 different tests**:
 
--   **[Backend Engineer](backend)**
--   **[Frontend Engineer](frontend)**
--   **[Data Scientist](datascience)**
+- **[Backend Engineer](backend)**
+- **[Frontend Engineer](frontend)**
+- **[Data Scientist](datascience)**
 
 A fourth test for **Infrastructure Engineer** is being created.
 

@@ -7,15 +7,15 @@
 Your mission, if you accept it, will be to create a dashboard-like user
 interface, where we can find:
 
--   User's personal information
-    -   First & Last name
--   User's business information
-    -   SIRET number
-    -   Creation date
-    -   Address (example: 10 Rue Gabriel Peri 92120, Montrouge)
--   User's financial information
-    -   Account type (TRANSACTION / SAVINGS)
-    -   Current balance
+- User's personal information
+  - First & Last name
+- User's business information
+  - SIRET number
+  - Creation date
+  - Address (example: 10 Rue Gabriel Peri 92120, Montrouge)
+- User's financial information
+  - Account type (TRANSACTION / SAVINGS)
+  - Current balance
 
 ### Design
 
@@ -71,9 +71,9 @@ for React application testing, but you're free to pick your favourite.
 
 Some remarks:
 
--   Use es6 or later, do not use es5
--   Do **not** use jQuery
--   Feel free to use vanilla css, CSS-in-JS, or utility-first libraries
+- Use es6 or later, do not use es5
+- Do **not** use jQuery
+- Feel free to use vanilla css, CSS-in-JS, or utility-first libraries
 
 ### What We Care About
 
@@ -82,12 +82,12 @@ as we're interested in the end result.
 
 Here's what you should strive for:
 
--   Good use of current HTML, CSS, and JavaScript / TypeScript
--   A keen eye for UX and user-friendly UI, without forgetting accessibility
--   A consistent architecture, focused on the simplicity of the project
-    (**keep it simple!**), pragmatism, no over-engineering
--   Extensible code
--   Clean code using proper programming patterns and JavaScript best practices
+- Good use of current HTML, CSS, and JavaScript / TypeScript
+- A keen eye for UX and user-friendly UI, without forgetting accessibility
+- A consistent architecture, focused on the simplicity of the project
+  (**keep it simple!**), pragmatism, no over-engineering
+- Extensible code
+- Clean code using proper programming patterns and JavaScript best practices
 
 ## The Weapons we provide you
 
@@ -124,14 +124,14 @@ more information about this endpoint.
 
 Here is a list of _nice-to-have_ bonuses is you may:
 
--   Write **clear documentation** on how the app was designed and how to
-    run the code
--   Provide e2e tests
--   Typescript
--   Beautiful charts
--   Write concise and clear commit messages
--   Provide an online demo of the application, in a deployed environment
--   User-friendly and clear UI
--   Complete user information (Profil picture, phone number, etc ...) with
-    another API like [randomuser](https://randomuser.me)
--   Describe optimization opportunities and next steps as you conclude
+- Write **clear documentation** on how the app was designed and how to
+  run the code
+- Provide e2e tests
+- Typescript
+- Beautiful charts
+- Write concise and clear commit messages
+- Provide an online demo of the application, in a deployed environment
+- User-friendly and clear UI
+- Complete user information (Profil picture, phone number, etc ...) with
+  another API like [randomuser](https://randomuser.me)
+- Describe optimization opportunities and next steps as you conclude

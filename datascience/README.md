@@ -75,13 +75,13 @@ solution is.
 
 To achieve your mission, you'll have to return us:
 
--   A project written in **Python** (3.x)
--   Clearly documented code or explanations with each function. **You need
-    to be able to justify your design choices** - from data processing to
-    algorithm decisions.
--   Use of the FastAPI format for routes and for serving your prediction
-    model and use of pydantic/typing for input/output validation (this is
-    free 😉)
+- A project written in **Python** (3.x)
+- Clearly documented code or explanations with each function. **You need
+  to be able to justify your design choices** - from data processing to
+  algorithm decisions.
+- Use of the FastAPI format for routes and for serving your prediction
+  model and use of pydantic/typing for input/output validation (this is
+  free 😉)
 
 What we really care about is getting to know your thought process, decision
 making and data science reflexes!
@@ -128,25 +128,25 @@ running the server by calling `uvicorn main:app` in another terminal window.
 
 If you wish to learn more about how to use FastAPI:
 
--   [Official FastAPI Docs](https://fastapi.tiangolo.com/)
--   [Official pydantic Docs](https://pydantic-docs.helpmanual.io/)
--   [Medium Post: How to Deploy a Machine Learning Model](https://towardsdatascience.com/how-to-deploy-a-machine-learning-model-dc51200fe8cf)
+- [Official FastAPI Docs](https://fastapi.tiangolo.com/)
+- [Official pydantic Docs](https://pydantic-docs.helpmanual.io/)
+- [Medium Post: How to Deploy a Machine Learning Model](https://towardsdatascience.com/how-to-deploy-a-machine-learning-model-dc51200fe8cf)
 
 ## The Weapons we provide you
 
 In the `data` folder, you will find three `csv` files containing real anonymized data from transactions, accounts and users:
 
--   The `transactions.csv` contains a set of transactions with an amount
-    (in EUR) and the date of the day they were added.
--   The `accounts.csv` contains a list of balances for the accounts that
-    the transactions pertain to.
--   The `users.csv` contains a list of the account owners with the date of
-    the last update of their financial data, as well as the NAF code of the
-    business of the user. Note that the balance provided for each account
-    is the balance on the update date of the user the account belongs to.
-    Additionnaly, a table of correspondance between the NAF code and the
-    official name of the activity is provided in the `business_NAF.csv`
-    file (more info about the NAF code can be found at https://www.insee.fr/fr/information/2406147).
+- The `transactions.csv` contains a set of transactions with an amount
+  (in EUR) and the date of the day they were added.
+- The `accounts.csv` contains a list of balances for the accounts that
+  the transactions pertain to.
+- The `users.csv` contains a list of the account owners with the date of
+  the last update of their financial data, as well as the NAF code of the
+  business of the user. Note that the balance provided for each account
+  is the balance on the update date of the user the account belongs to.
+  Additionnaly, a table of correspondance between the NAF code and the
+  official name of the activity is provided in the `business_NAF.csv`
+  file (more info about the NAF code can be found at https://www.insee.fr/fr/information/2406147).
 
 Provided with this repo is also a `main.py` file with a minimal [FastAPI](https://fastapi.tiangolo.com/)
 demo. Once you have installed the `requirements.txt` in your Python
