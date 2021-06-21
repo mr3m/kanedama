@@ -23,6 +23,8 @@ Your mission, if you accept it, will be to:
 3. Check if the user have at least **3 years of transaction history** between
    the oldest and the most recent transaction (all accounts aggregated!)
 
+## Delivery
+
 To achieve your mission, you'll have to return us:
 
 - A project written in **TypeScript**
@@ -34,9 +36,7 @@ We want you to write code that meets the highest industry standard. It must be
 
 Good luck and above all, have fun!
 
-_For any question, feel free to send me an email at remy.tinco '@' getmansa.com._
-
-## The Weapons we provide
+## The Weapons we provide you
 
 We have set up a pretty straightforward REST API with 3 endpoints:
 
