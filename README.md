@@ -31,9 +31,14 @@ Good luck! 💥
 
 ## Delivery
 
-We recommand you to create a private GitHub repository (GitHub can host
-them for free!). After submission, one may tell you to add several persons
-to your repository to review it properly.
+For each test, we provide you a starter project to work on. This way, you'll
+not have the hassle to setup one yourself. Start within a minute by clicking
+the `Use this template` button above this README. You'll be asked to create
+either a public or private repository.
+
+> Please note that after submission, in case of a private repository, one
+> may ask you to add several persons to the repository to ease the review
+> process.
 
 <details>
 <summary>You do not want to add us to your repository?</summary>
