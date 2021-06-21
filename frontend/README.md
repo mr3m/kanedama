@@ -23,9 +23,9 @@ In order not to influcence your design choices, we will not provide you
 with a wireframe to follow or a screenshot of our current dashboard. But
 with the following insights:
 
-|                User page                |              Account page               |
-| :-------------------------------------: | :-------------------------------------: |
-| ![Design Draft1](./pictures/draft1.png) | ![Design Draft1](./pictures/draft2.png) |
+|                        User page                        |                      Account page                       |
+| :-----------------------------------------------------: | :-----------------------------------------------------: |
+| ![Design Draft1](../.github/assets/frontend/draft1.png) | ![Design Draft2](../.github/assets/frontend/draft2.png) |
 
 These insights are only here to show the information required and provide
 a baseline to your design choices and implementations.
