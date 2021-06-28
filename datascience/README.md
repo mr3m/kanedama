@@ -4,12 +4,13 @@
 
 ## The Mission
 
-Your mission, if you accept is, will be to test your ability to deal with
-time-series data, build a model, and serve a model using an API framework.
+Your mission, should you choose to accept it, is to demonstrate your
+ability to deal with time-series data, build a model, and serve it
+using an API framework.
 
-Your task is to use this data to make a model capable of making
-predictions. There are two options for models that you can build - pick and
-implement the one you feel is more fun.
+Your task is to use the provided data (more info at the bottom) to design a
+model capable of making predictions. There are two options for models that
+you can build - pick and implement the one you feel is more fun.
 
 Your model should then be served through the small [FastAPI](https://fastapi.tiangolo.com/)
 file provided. Feel free to extend it or split the file as needed.
@@ -23,12 +24,12 @@ such.
 Build a function to check which accounts have more than 180 days of
 history - you can discard the others for your models and analysis.
 
-_You can assume that any accounts/transactions passed to your service will
+_You can assume that any account passed to your service will
 have at least 6 months of history._
 
 You have several options for the model to build:
 
-#### Option A: Predict the next month's income given the past six months
+#### Option A: Predict next month's income given the past 6 months
 
 Set up a prediction function that takes a list of accounts, a list of
 transactions and a user and ouputs a prediction for the aggregated next
@@ -38,12 +39,12 @@ Income is defined as the sum of all transactions with the amount `> 0` over
 a certain time-period. So to get the monthly income, you can sum the
 transactions over monthly periods.
 
-Tip: It might make more sense to define a month as a 30 day period rather
-than the month itself since the snapshots can be taken at any point during
-the month and not necessarily at the end. Alternatively you could decide to
-only keep "full" months of transactions in the dataset.
+> Tip: It might make more sense to define a month as a 30 day period rather
+> than the month itself since the snapshots can be taken at any point during
+> the month and not necessarily at the end. Alternatively you could decide
+> to only keep "full" months of transactions in the dataset.
 
-#### Option B: Predict the next week's outgoing given the past 3 months (12 weeks)
+#### Option B: Predict next week's outgoing given the past 12 weeks
 
 Set up a prediction function that takes a list of accounts, a list of
 transactions and a user and ouputs a prediction for the aggregated next
@@ -73,7 +74,7 @@ solution is.
 
 ## Delivery
 
-To achieve your mission, you'll have to return us:
+To achieve your mission, you'll have to deliver:
 
 - A project written in **Python** (3.x)
 - Clearly documented code or explanations with each function. **You need
@@ -95,7 +96,7 @@ appropriate. Pandas/numpy/scikit-learn are encouraged!
 Your solution must be able to run and respond to requests (it can take as
 long to calculate as you want). You can imagine it as a micro-service that
 could be run independently on a server. Additional notebooks, analysis or
-plots to accompany your model will be very welcomed!
+plots to accompany your model will be very welcome!
 
 ### Serving your solution through FastAPI
 
@@ -144,7 +145,7 @@ In the `data` folder, you will find three `csv` files containing real anonymized
   the last update of their financial data, as well as the NAF code of the
   business of the user. Note that the balance provided for each account
   is the balance on the update date of the user the account belongs to.
-  Additionnaly, a table of correspondance between the NAF code and the
+- Additionnaly, a table of correspondance between the NAF code and the
   official name of the activity is provided in the `business_NAF.csv`
   file (more info about the NAF code can be found at https://www.insee.fr/fr/information/2406147).
 

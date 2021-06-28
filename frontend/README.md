@@ -4,8 +4,8 @@
 
 ## The Mission
 
-Your mission, if you accept it, will be to create a dashboard-like user
-interface, where we can find:
+Your mission, should you choose to accept it, is to create a
+dashboard-like user interface, where we can find:
 
 - User's personal information
   - First & Last name
@@ -19,24 +19,25 @@ interface, where we can find:
 
 ### Design
 
-In order not to influcence your design choices, we will not provide you
-with a wireframe to follow or a screenshot of our current dashboard. But
-with the following insights:
+In order not to influence your design choices, we will not provide you
+with a wireframe to follow or a screenshot of our current dashboard.
+As mentioned above, your interface should however display the information
+shown below:
 
 |                        User page                        |                      Account page                       |
 | :-----------------------------------------------------: | :-----------------------------------------------------: |
 | ![Design Draft1](../.github/assets/frontend/draft1.png) | ![Design Draft2](../.github/assets/frontend/draft2.png) |
 
-These insights are only here to show the information required and provide
-a baseline to your design choices and implementations.
+The 2 screenshots above are only here to show the information required and
+provide a baseline to your design choices and implementations.
 
-The 2 screenshots do **not** represent our current dashboard nor the layout
+They do **not** by any mean represent our current dashboard nor the layout
 we necessarily expect: we provide no constraints regarding the UI and design
 in general, feel free to implement your own.
 
 ### Scope
 
-The view should only be for **one** user.
+The view should only be for **one** single user.
 
 You will need to leverage an open API for business data to fill in the details
 and functionality as described below.
@@ -65,8 +66,8 @@ The use of component libraries, like Material UI, might make this easier and
 quicker for you but keep in mind that using them means we'll have less code
 to assess your knowledge and Frontend skills.
 
-We expect you to test your code: the minimum requirement is unit tests,
-end-to-end tests are a big plus. From our experience Cypress.js works very well
+We expect you to test your code: the minimum requirement is unit tests.
+End-to-end tests are a big plus. From our experience Cypress.js works very well
 for React application testing, but you're free to pick your favourite.
 
 Some remarks:
@@ -93,7 +94,7 @@ Here's what you should strive for:
 
 ### French government API
 
-For business information, you'll have use the French SIRENE public API,
+For business information, you'll have to use the French SIRENE public API,
 you can find the documentation about it [here](https://entreprise.data.gouv.fr/api_doc/sirene).
 
 You can retrieve the information about a business by using the following URL:
@@ -110,10 +111,10 @@ You can choose any SIREN (legal id) you want for your test.
 
 For financial information, you'll use a custom API:
 
-| Method  | Endpoint                                                            | Description                                                                                                                                                                                                                                                                        |
-| ------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **GET** | /accounts                                                           | Fetch all bank accounts from a _test user_                                                                                                                                                                                                                                         |
-| **GET** | /accounts/:account*id/transactions?from=\_start_date*&to=_end_date_ | Fetch the specified _account_id_ transactions from the _start_date_ to the _end_date_. Date are ISO 8601 UTC, so for example `2018-08-13T03:24:00` It can't return more than **365 days** of transactions. If there are no date specified, the oldest transaction will be returned |
+| Method  | Endpoint                                                            | Description                                                                                                                                                                                                                                                                         |
+| ------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **GET** | /accounts                                                           | Fetch all bank accounts from a _test user_                                                                                                                                                                                                                                          |
+| **GET** | /accounts/:account*id/transactions?from=\_start_date*&to=_end_date_ | Fetch the specified _account_id_ transactions from the _start_date_ to the _end_date_. Date are ISO 8601 UTC, so for example `2018-08-13T03:24:00` It can't return more than **365 days** of transactions. If there are no dates specified, the oldest transaction will be returned |
 
 **Root endpoint is: https://kata.getmansa.com/**
 
@@ -122,7 +123,7 @@ more information about this endpoint.
 
 ### The final words
 
-Here is a list of _nice-to-have_ bonuses is you may:
+Here is a list of _nice-to-have_ bonuses:
 
 - Write **clear documentation** on how the app was designed and how to
   run the code
