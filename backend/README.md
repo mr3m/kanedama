@@ -1,60 +1,86 @@
-# Welcome to our kata!
+<p align="center"><a href="https://github.com/MansaGroup/kanedama" target="blank"><img src="../.github/assets/logo.png" width="80" alt="Mansa's Logo" /></a></p>
+<h1 align="center">Mansa's Kanedama</h1>
+<p align="center">Take host test to <b>join us</b> 💜</p>
 
-Hi! This project aims to evaluate candidates applying for a position in our **engineering squad**. 
-We encountered a scenario similar to this one during our 1st release and we're curious to see your approach to this problem. 
+## Introduction
 
-## Exercise
+This project aims to evaluate candidates applying for a position in our
+**engineering squad**.
 
-We expect you to: 
+We encountered a scenario similar to this one during our 1st release and
+we're curious to see your approach to this problem.
 
- 1. Find the **average amount of positive transactions** for the **6 months** prior to the *most recent transaction*. To clarify, the formula is:  
- Sum of positive transactions / Number of positive transactions. Round your result down.
- 2. Find the **Min** and **Max** balance of the *test user* accounts whole history (all accounts aggregated!). Round your result down.
- 3. Check if the user have at least **3 years of transaction history** between the oldest and the most recent transaction (all accounts aggregated!)
+## The Mission
 
-## API
+Your mission, should you choose to accept it, is to:
 
-We set up a minimal REST API with 3 endpoints:
+1. Find the **average amount of positive transactions** for the **6 months**
+   prior to the _most recent transaction_. To clarify, the formula is:
+   `sum of positive transactions / number of positive transactions`.
+   Round your result down.
+2. Find the **minimum** and **maximum** balance of the _test user_
+   whole history (all accounts aggregated!). Round your result down.
+3. Check if the user has at least **3 years of transaction history** between
+   the oldest and the most recent transaction (all accounts aggregated!)
 
-Endpoint  | Data | Method
------------- | ------------- | ---------
-/accounts | Fetch all bank accounts from a *test user*. | [GET]
-/accounts/:account_id/transactions?from=*start_date*&to=*end_date* | Fetch the specified *account_id* transactions from the *start_date* to the *end_date*. Date are ISO 8601 UTC, so for example `2018-08-13T03:24:00` It can't return more than **365 days** of transactions. If there are no date specified, the oldest transaction will be returned. | [GET]
-/answer | Post your results in the body, the body needs to be of type AnswerDto. Every number needs to be rounded to the minimum. Json Content-type please :) | [POST]
+## Delivery
 
-Root endpoint is : https://kata.getmansa.com/
+To achieve your mission, you'll have to deliver:
 
-You can find the *Data Transfer Object* (DTO) for the answer object in the `src/common/dto/` folder of this repo. You will also find *Response Objects* (RO) for the accounts and the transactions in the `src/common/ro/` folder.
+- A project written in **TypeScript**
+- Using the **NestJS** framework
+- Exposing a `GET /answer` endpoint returning an `AnswerDto`
 
-## Project
+We want you to write code that meets the highest industry standard. It must be
+**fast**, **robust**, **readable**, and you need to include **tests** as well.
 
-- **Your project must be written in TypeScript**
+Good luck and above all, have fun!
 
-- **You have to deliver a working NestJS project**
+## The Weapons we provide you
 
-- **Your project must expose a `GET /answer` endpoint responding with an `AnswerDto` object**
+We have set up a pretty straightforward REST API with 3 endpoints:
 
-- **Our `POST /answer` endpoint is here to verify your solution. If it's right, you'll get access code and instructions for the next step**
+| Method   | Endpoint                                                            | Description                                                                                                                                                                                                                                                                         |
+| -------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **GET**  | /accounts                                                           | Fetch all bank accounts from a _test user_                                                                                                                                                                                                                                          |
+| **GET**  | /accounts/:account*id/transactions?from=\_start_date*&to=_end_date_ | Fetch the specified _account_id_ transactions from the _start_date_ to the _end_date_. Date are ISO 8601 UTC, so for example `2018-08-13T03:24:00` It can't return more than **365 days** of transactions. If there are no dates specified, the oldest transaction will be returned |
+| **POST** | /answer                                                             | Post your results in the body, the body needs to be of type `AnswerDto`. Every number needs to be rounded to the minimum. JSON content is expected                                                                                                                                  |
 
-We want you to write code that meets the highest industry standard. It must be **fast**, **robust**, **readable**, and you need to **include tests** as well.
+**Root endpoint is: https://kata.getmansa.com/**
 
-Good luck and have fun!
+You can find the _Data Transfer Object_ (DTO) for the answer object in the `src/common/dto/` folder of this repo. You will also find _Response Objects_ (RO) for the accounts and the transactions in the `src/common/ro/` folder.
 
-*For any question, feel free to send me an email at remy.tinco '@' getmansa.com.*
+**Our `POST /answer` endpoint is here to verify your solution. If it's right, you'll get access code and instructions for the next step.**
 
-### Hints
+## Hints
+
+<details>
+<summary>Expected answer</summary>
 
 Here's the expected answer:
+
 ```json
+{
+  "6_month_average_income": 407,
+  "3_years_activity": true,
+  "max_balance": 19540,
+  "min_balance": -4285
+}
+```
+
+Here the corresponding cURL command:
+
+```bash
+curl -XPOST https://kata.getmansa.com/answer \
+	-H 'Content-Type: application/json' \
+	--data-binary @- << EOF
 {
 	"6_month_average_income": 407,
 	"3_years_activity": true,
 	"max_balance": 19540,
 	"min_balance": -4285
 }
+EOF
 ```
 
-Here the corresponding cURL command : 
-```JSON
-curl -d '{"6_month_average_income": 407,"3_years_activity": true,"max_balance": 19540,"min_balance": -4285}' -H "Content-Type: application/json" -X POST https://kata.getmansa.com/answer
-```
+</details>

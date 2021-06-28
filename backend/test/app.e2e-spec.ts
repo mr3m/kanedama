@@ -1,30 +1,21 @@
-import { NestApplication } from '@nestjs/core';
 import { Test, TestingModule } from '@nestjs/testing';
-import { HttpStatus } from '@nestjs/common';
+import { HttpStatus, INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
-import { AppModule } from '@kanedama/app';
+import { AppModule } from '../src/app/app.module';
 
-const REMOTE_ENDPOINT =
-  process.env.REMOTE_ENDPOINT || 'https://kata.getmansa.com';
+const API_HOST = process.env.API_HOST || 'https://kata.getmansa.com';
 
 describe('Kanedama', () => {
-  let app: NestApplication;
+  let app: INestApplication;
 
-  beforeEach(() =>
-    Test.createTestingModule({
+  beforeEach(async () => {
+    const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
-    })
-      .compile()
-      .then((testingModule: TestingModule) =>
-        testingModule.createNestApplication().init(),
-      )
-      .then(
-        (testingApplication: NestApplication) => (app = testingApplication),
-      ),
-  );
+    }).compile();
 
-  it('should be initialized', () =>
-    expect(app).toBeInstanceOf(NestApplication));
+    app = moduleFixture.createNestApplication();
+    await app.init();
+  });
 
   describe('GET /answer', () => {
     it('should respond with the correct answer', () =>
@@ -41,7 +32,7 @@ describe('Kanedama', () => {
           }),
         )
         .then(({ body: applicantAnswer }) =>
-          request(REMOTE_ENDPOINT)
+          request(API_HOST)
             .post('/answer')
             .send(applicantAnswer)
             .expect(HttpStatus.CREATED)
