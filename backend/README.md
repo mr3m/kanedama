@@ -48,7 +48,7 @@ We have set up a pretty straightforward REST API with 3 endpoints:
 
 **Root endpoint is: https://kata.getmansa.com/**
 
-You can find the _Data Transfer Object_ (DTO) for the answer object in the `src/common/dto/` folder of this repo. You will also find _Response Objects_ (RO) for the accounts and the transactions in the `src/common/ro/` folder.
+You can find the _Data Transfer Object_ (DTO) for all request objects, including bodies and responses in the `src/common/dtos` folder.
 
 **Our `POST /answer` endpoint is here to verify your solution. If it's right, you'll get access code and instructions for the next step.**
 
