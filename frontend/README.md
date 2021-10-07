@@ -32,11 +32,10 @@ You will need to leverage an open API for business data to fill in the details a
 
 ## Delivery
 
-Minimum requirement:
+A clone or fork of this repositery containing:
 
-- A clone or fork of this repositery [`/frontend`](https://github.com/MansaGroup/kanedama/tree/main/frontend)
-- A README file at the root of your repo explaining your approach, design choices, improvements and next steps
 - An integration of the wireframe above, with the data flow described in this brief
+- A README file at the root of your repo explaining your approach, design choices, improvements and next steps
 
 Bonus:
 
@@ -61,8 +60,11 @@ Here's what you should strive for:
 - Extensible code
 - Clear data flow (with at least one custom hook for data fetching)
 - Fluid layout that would fit on main viewports (from mobile to desktop)
+- Concise and clear commit messages
+- Complete user information (Profil picture, phone number, etc ...) with
+  another API like [randomuser](https://randomuser.me)
 
-## The tools we provide you
+## The APIs
 
 ### French government API
 
@@ -90,19 +92,3 @@ For financial information, you'll use a custom API:
 **Root endpoint is: https://kata.getmansa.com/**
 
 You can see our [Backend test README](../backend/README.md) if you want more information about this endpoint.
-
-### The final words
-
-Here is a list of _nice-to-have_ bonuses:
-
-- Write **clear documentation** on how the app was designed and how to
-  run the code
-- Provide e2e tests
-- Typescript
-- Beautiful charts
-- Write concise and clear commit messages
-- Provide an online demo of the application, in a deployed environment
-- User-friendly and clear UI
-- Complete user information (Profil picture, phone number, etc ...) with
-  another API like [randomuser](https://randomuser.me)
-- Describe optimization opportunities and next steps as you conclude
