@@ -10,7 +10,7 @@ Your model should then be served through the small [FastAPI](https://fastapi.tia
 
 ## Before you pick a model
 
-You will deal with bank account transactions data. We suggest you take a look and explore them. Since those are real data, they are noisy and sparse. Some columns such as dates might need to be parsed as such.
+You will deal with bank account transactions data. We suggest you take a look and explore them. Since those are real data, they are noisy and sparse, and there may be duplicated data. Some columns such as dates might need to be parsed as such.
 
 Build a function to check which accounts have more than 180 days of history - you can discard the others for your models and analysis.
 
@@ -32,7 +32,6 @@ To achieve your mission, you'll have to deliver:
 
 - A documented `Python` (3.x) code with a `readme.md`.
 - An API serving your prediction model based on `FastAPI`.
-- Typing for input/output validation using `pydantic`.
 - Notebooks and/or plots to support your decision process.
 
 Your solution must be able to run and respond to requests (it can take as long to calculate as you want). You can imagine it as a micro-service that could be run independently on a server.
@@ -55,6 +54,10 @@ In the `data` folder, you will find three `csv` files containing real anonymized
 - The `transactions.csv` contains a set of transactions with an amount (in EUR) and the date of the day they were added.
 - The `accounts.csv` contains a list of balances for the accounts that the transactions pertain to.
 - The `users.csv` contains a list of the account owners with the date of the last update of their financial data. Note that the balance provided for each account is the balance at the update date of the user the account belongs to.
+
+> **Tip 3.** The available transaction history on each account is defined as the time elapsed since the oldest transaction on this account and the **update date** of the account, not the date of the latest transaction on the account. If the date of the latest transaction on the account is older than the update date, that simply means that no transactions were recorded on the account in this time period.
+
+> **Tip 4.** Some users may have several accounts. While the update date is the same for all the different accounts of a given user, the length of the available transaction history is not necessarily the same.
 
 # FastAPI 101
 
