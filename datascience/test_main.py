@@ -11,14 +11,10 @@ def test_predict():
     """
     Test the predict route with test data
     """
-    test_user = {
-        "id": 1,
-        "update_date": str(datetime(2020, 1, 1)),
-        "business_NAF_code": "7022Z",
-    }
+    test_user = {"id": 1,"update_date": str(datetime(2020, 1, 1))}
     test_accounts = [{"id": 1, "balance": 10000, "user_id": 1}]
     test_transactions = [
-        {"account_id": 1, "date": str(datetime(2019, i, 1)), "amount": 1000}
+        {"account_id": 1, "date": str(datetime(2019, i, 1)), "amount": -100}
         for i in range(1, 10)
     ]
 
