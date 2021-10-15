@@ -7,7 +7,6 @@ from pydantic import BaseModel, validator
 
 class User(BaseModel):
     update_date: datetime
-    business_NAF_code: str
     id: int
 
 
