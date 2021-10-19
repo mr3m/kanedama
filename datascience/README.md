@@ -30,7 +30,7 @@ Outgoing is defined as the sum of all transactions with `< 0` amount over a cert
 
 To achieve your mission, you'll have to deliver:
 
-- A documented `Python` (3.x) code with a `readme.md`.
+- A documented `Python` (3.x) code with a `readme.md` describing your approach.
 - An API serving your prediction model based on `FastAPI`.
 - Notebooks and/or plots to support your decision process.
 
