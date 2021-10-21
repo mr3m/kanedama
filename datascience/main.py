@@ -1,41 +1,33 @@
-from datetime import datetime
+from datetime import date
 from typing import List
 
 from fastapi import FastAPI
 from pydantic import BaseModel, validator
 
 
-class User(BaseModel):
-    update_date: datetime
-    id: int
-
-
 class Account(BaseModel):
-    user_id: int
+    update_date: date
     balance: float
-    id: int
 
 
 class Transaction(BaseModel):
-    account_id: int
     amount: float
-    date: datetime
+    date: date
 
 
 class RequestPredict(BaseModel):
-    user: User
-    accounts: List[Account]
+    account: Account
     transactions: List[Transaction]
 
     @validator("transactions")
     def validate_transaction_history(cls, v, *, values):
-        # validate that
+        # validate that 
         # - the transaction list passed has at least 6 months history
-        # - no transaction is posterior to the user's update date
+        # - no transaction is posterior to the account's update date
         if len(v) < 1:
-            raise ValueError("Must have at least one Transaction")
+            raise ValueError("Must have at least one transaction")
 
-        update_t = values["user"].update_date
+        update_t = values["account"].update_date
 
         oldest_t = v[0].date
         newest_t = v[0].date
@@ -54,12 +46,11 @@ class RequestPredict(BaseModel):
 
 
 class ResponsePredict(BaseModel):
-    user_id: int
     predicted_amount: float
 
 
 def predict(
-    transactions: List[Transaction], accounts: List[Account], user: User
+    transactions: List[Transaction], account: Account
 ) -> float:
     raise NotImplementedError()
 
@@ -70,12 +61,11 @@ app = FastAPI()
 @app.post("/predict")
 async def root(predict_body: RequestPredict):
     transactions = predict_body.transactions
-    accounts = predict_body.accounts
-    user = predict_body.user
+    account = predict_body.account
 
     # Call your prediction function/code here
     ####################################################
-    # predicted_amount = predict(transactions, accounts, user)
+    #predicted_amount = predict(transactions, account)
 
-    # Return predicted amount along with account id
-    return {"user_id": user.id, "predicted_amount": 0}
+    # Return predicted amount
+    return {"predicted_amount": 0}
