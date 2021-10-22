@@ -31,10 +31,11 @@ Outgoing is defined as the sum of all transactions with `< 0` amount over a cert
 To achieve your mission, you'll have to deliver:
 
 - A documented `Python` (3.x) code (please specify what `Python` version you've used)
-- A `requirements.txt` with all the dependencies necessary to run your code
-- A `README.md` describing your approach
 - A working API serving your prediction model based on `FastAPI`
 - Notebooks and/or plots to support your decision process
+- A `README.md` describing your approach
+- A `requirements.txt` with the minimal set of dependencies necessary to run your api
+- A `requirements-eda.txt` with all dependencies necessary to run your api and all additional notebooks or files that you may provide
 
 You can basically make whatever choice you see fit, but we do expect you to justify all the decisions that you make.
 We are not going to evaluate your test based on the accuracy of your model, but we do expect you to provide a critical discussion of the strength and weaknesses of your approach, and to elaborate on possible ways to improve your work.
