@@ -91,5 +91,5 @@ If you wish to learn more about how to use `FastAPI`:
 
 To run the solution, use python `3.8.3` and run on your terminal at the `datascience` directory :
 ```sh
-source install.sh
+source setup.sh
 ```
