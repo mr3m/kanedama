@@ -86,3 +86,10 @@ If you wish to learn more about how to use `FastAPI`:
 - [Official FastAPI Docs](https://fastapi.tiangolo.com/)
 - [Official pydantic Docs](https://pydantic-docs.helpmanual.io/)
 - [Medium Post: How to Deploy a Machine Learning Model](https://towardsdatascience.com/how-to-deploy-a-machine-learning-model-dc51200fe8cf)
+
+# Solution
+
+To run the solution, use python `3.8.3` and run on your terminal at the `datascience` directory :
+```sh
+source install.sh
+```
