@@ -15,13 +15,18 @@ class Transaction(BaseModel):
     date: date
 
 
+class RequestTrain(BaseModel):
+    accounts: List[Account]
+    transactions: List[Transaction]
+
+
 class RequestPredict(BaseModel):
     account: Account
     transactions: List[Transaction]
 
     @validator("transactions")
     def validate_transaction_history(cls, v, *, values):
-        # validate that 
+        # validate that
         # - the transaction list passed has at least 6 months history
         # - no transaction is posterior to the account's update date
         if len(v) < 1:
@@ -49,6 +54,12 @@ class ResponsePredict(BaseModel):
     predicted_amount: float
 
 
+def train(
+    transactions: List[Transaction], accounts: List[Account]
+) -> None:
+    raise NotImplementedError()
+
+
 def predict(
     transactions: List[Transaction], account: Account
 ) -> float:
@@ -58,14 +69,20 @@ def predict(
 app = FastAPI()
 
 
+@app.post("/train")
+async def train_root(train_body: RequestTrain):
+    training_state = 'Success'
+    return {"Training": training_state}
+
+
 @app.post("/predict")
-async def root(predict_body: RequestPredict):
+async def predict_root(predict_body: RequestPredict):
     transactions = predict_body.transactions
     account = predict_body.account
 
     # Call your prediction function/code here
     ####################################################
-    #predicted_amount = predict(transactions, account)
+    # predicted_amount = predict(transactions, account)
 
     # Return predicted amount
     return {"predicted_amount": 0}
