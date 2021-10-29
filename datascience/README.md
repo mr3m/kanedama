@@ -89,7 +89,7 @@ If you wish to learn more about how to use `FastAPI`:
 
 # Solution
 
-To run the solution, use python `3.8.3` and run on your terminal at the `datascience` directory :
+To run the solution, use python `3.8.8` and run on your terminal at the `datascience` directory :
 ```sh
 source setup.sh
 ```
