@@ -55,8 +55,7 @@ class ResponsePredict(BaseModel):
 
 
 def train(
-    transactions: List[Transaction], accounts: List[Account]
-) -> None:
+    transactions: List[Transaction], accounts: List[Account]) -> None:
     raise NotImplementedError()
 
 
