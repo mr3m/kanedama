@@ -21,7 +21,6 @@ def get_test_transactions():
         for i in range(1, 10)
         for j in [5, 17, 26]
     ]
-
     return test_transactions
 
 
