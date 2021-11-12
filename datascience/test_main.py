@@ -26,7 +26,7 @@ def get_test_transactions():
 
 def test_train():
     """
-    Test the training route with test date
+    Test the training route with test data
     """
     test_data = {
         "accounts": get_test_accounts(),
