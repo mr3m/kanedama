@@ -105,9 +105,14 @@ You're invited to see the file `exploration.ipynb` in resume :
 - I try to fit other regression models on the same dataset improving on accuracy. 
 - I try to optimize hyper-parameters of the winning model, no notable improvement
 - I try to fit an ARIMA model using validation and testing dataset to try to optimize the order of the timeseries minimizing AIC, no better results than previous model
+- Best R^2 score was of about 0.574 +/- 0.087
 
 ## API
 
 A new `/train` route was added, in which a List of List of Transactions paired with the Account information must be submitted to train the model, this will export a binary file containing the trained model.
 Then the `/predict` route can be called as usual, if the model is not fitted previously this will fail.
- 
+
+
+## Notes 
+
+I couldn't diagnose for "duplicated" transactions. How to decide wether two transactions of the same amount on the same day are duplicated and does not correspond to two operations of the same amount ? 
