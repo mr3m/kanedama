@@ -1,4 +1,5 @@
 import json
+import random
 from datetime import date
 
 import requests
@@ -17,7 +18,7 @@ def get_test_accounts():
 
 def get_test_transactions():
     test_transactions = [
-        {"date": str(date(2020, i, j)), "amount": -100}
+        {"date": str(date(2020, i, j)), "amount": random.uniform(-100, 100)}
         for i in range(1, 10)
         for j in [5, 17, 26]
     ]
@@ -28,13 +29,13 @@ def test_train():
     """
     Test the training route with test data
     """
-    test_data = {
-        "accounts": get_test_accounts(),
-        "transactions": get_test_transactions(),
-    }
+    test_data = {}
+    test_data['accounts'] = get_test_accounts()
+    test_data['transactions'] = [
+      get_test_transactions() for _ in test_data['accounts']
+    ]
 
-    print("Calling train route on API with test data:")
-    print(test_data)
+    print("Calling train route on API with test data")
 
     response = requests.post(
         "http://127.0.0.1:8000/train", data=json.dumps(test_data)
