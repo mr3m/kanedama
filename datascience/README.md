@@ -89,7 +89,25 @@ If you wish to learn more about how to use `FastAPI`:
 
 # Solution
 
+## Installation
+
 To run the solution, use python `3.8.8` and run on your terminal at the `datascience` directory :
 ```sh
 source setup.sh
 ```
+
+## Exploratory Data Analysis
+
+You're invited to see the file `exploration.ipynb` in resume : 
+- I explore the data, the distribution of balances and some visualization of the transactions at different aggregation levels
+- I try to fit a linear model on the incoming transactions and balance to predict the outgoing for the same period having good results
+- I try to fit a linear model on the past incoming and outgoing transactions, and balances to predict the upcoming aggregated outgoing. 
+- I try to fit other regression models on the same dataset improving on accuracy. 
+- I try to optimize hyper-parameters of the winning model, no notable improvement
+- I try to fit an ARIMA model using validation and testing dataset to try to optimize the order of the timeseries minimizing AIC, no better results than previous model
+
+## API
+
+A new `/train` route was added, in which a List of List of Transactions paired with the Account information must be submitted to train the model, this will export a binary file containing the trained model.
+Then the `/predict` route can be called as usual, if the model is not fitted previously this will fail.
+ 
