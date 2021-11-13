@@ -3,3 +3,5 @@ pydantic==1.8.2
 requests
 uvicorn
 black
+pandas
+sklearn
