@@ -191,10 +191,12 @@ def train(transactions: List[List[Transaction]], accounts: List[Account]) -> dic
 def predict(transactions: List[Transaction], account: Account) -> float:
     estimator = load('estimator.joblib')
     transaction_timeseries = transaction_to_timeseries(transactions, account)
-    prediction = estimator.predict(
-        pd.DataFrame(build_training_set([transaction_timeseries],
+    prediction_timeseries = pd.DataFrame(build_training_set([transaction_timeseries],
                                     transaction_timeseries.transaction_date_span.days
-                                    )).drop('outgoing_to_predict', axis=1).to_numpy()
+                                    )).drop('outgoing_to_predict', axis=1)
+    prediction_timeseries['estimated_balance'] = account.balance # Use actual balance
+    prediction = estimator.predict(
+        prediction_timeseries.to_numpy()
     )[0]
     return prediction
 
