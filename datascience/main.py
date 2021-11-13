@@ -22,7 +22,7 @@ class Transaction(BaseModel):
 
 class RequestTrain(BaseModel):
     accounts: List[Account]
-    transactions: List[Transaction]
+  transactions: List[List[Transaction]]
 
 
 class RequestPredict(BaseModel):
