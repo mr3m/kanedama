@@ -1,5 +1,5 @@
 from datetime import date
-from joblib import dump
+from joblib import dump, load
 from typing import List
 
 import pandas as pd
@@ -8,6 +8,8 @@ from fastapi import FastAPI
 from pydantic import BaseModel, validator
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
+
+PERIODS = [f'{day}d' for day in (1, 5, 7, 10, 14, 30, 45, 50, 60)]
 
 
 class Account(BaseModel):
@@ -100,54 +102,60 @@ class TransactionTimeSeries:
     return self.transactions
 
 
+def transaction_to_timeseries(single_transactions: List[Transaction], account: List[Account]) -> TransactionTimeSeries:
+  single_transactions_df = pd.DataFrame(map(dict, single_transactions))
+  single_transactions_df['date'] = pd.to_datetime(single_transactions_df.date)
+  single_transactions_df = single_transactions_df.set_index('date')
+  return TransactionTimeSeries(single_transactions_df, account)
+
+
 def preprocess_data(transactions: List[List[Transaction]], accounts: List[Account]) -> List[TransactionTimeSeries]:
   timeseries_list = []
   for single_transactions, account in zip(transactions, accounts):
-    single_transactions_df = pd.DataFrame(map(dict, single_transactions))
-    single_transactions_df['date'] = pd.to_datetime(single_transactions_df.date)
-    single_transactions_df = single_transactions_df.set_index('date')
-    transaction_timeseries = TransactionTimeSeries(single_transactions_df, account)
+    transaction_timeseries = transaction_to_timeseries(single_transactions, account)
     if transaction_timeseries.transaction_date_span.days > 180:
       timeseries_list.append(transaction_timeseries)
 
   return timeseries_list
 
 
+def compute_timeseries_features(timeseries, number_of_days):
+  return (
+    timeseries.transactions_after_n_days(number_of_days).incoming_transactions()().sum().amount,
+    # The sum of incoming transactions
+    timeseries.transactions_after_n_days(number_of_days).outgoing_transactions()().sum().amount,
+    # The sum of outgoing transactions
+    timeseries.transactions_after_n_days(number_of_days)().sum().amount,
+    # This should be a proxy of the balance,
+    # that is the sum of outgoing and incoming transactions up to the cut date `n`
+    timeseries.transactions_after_n_days(number_of_days)().cumsum().mean().amount,
+    # The mean balance
+    *[timeseries.transactions_after_n_days(number_of_days).incoming_transactions(
+    ).resample('d').sum().rolling(period).sum().dropna().mean().amount
+      for period in PERIODS],
+    # The rolling mean of incoming transactions at various periods
+    *[timeseries.transactions_after_n_days(number_of_days).outgoing_transactions(
+    ).resample('d').sum().rolling(period).sum().dropna().mean().amount
+      for period in PERIODS],
+    # The rolling mean of outgoing transactions at various periods
+    timeseries.transactions_from_n_to_m_days(
+      number_of_days, number_of_days + 30).outgoing_transactions()().sum().amount
+    # The sum of outgoing transactions on the 30 days after the cut date `n`, that is the label to predict
+  )
+
+
 def build_training_set(timeseries_list: List[TransactionTimeSeries], number_of_days: int):
-  periods = [f'{day}d' for day in (1, 5, 7, 10, 14, 30, 45, 50, 60)]
   return pd.DataFrame(
-    [
-      (
-        timeseries.transactions_after_n_days(number_of_days).incoming_transactions()().sum().amount,
-        # The sum of incoming transactions
-        timeseries.transactions_after_n_days(number_of_days).outgoing_transactions()().sum().amount,
-        # The sum of outgoing transactions
-        timeseries.transactions_after_n_days(number_of_days)().sum().amount,
-        # This should be a proxy of the balance,
-        # that is the sum of outgoing and incoming transactions up to the cut date `n`
-        timeseries.transactions_after_n_days(number_of_days)().cumsum().mean().amount,
-        # The mean balance
-        *[timeseries.transactions_after_n_days(number_of_days).incoming_transactions(
-        ).resample('d').sum().rolling(period).sum().dropna().mean().amount
-          for period in periods],
-        # The rolling mean of incoming transactions at various periods
-        *[timeseries.transactions_after_n_days(number_of_days).outgoing_transactions(
-        ).resample('d').sum().rolling(period).sum().dropna().mean().amount
-          for period in periods],
-        # The rolling mean of outgoing transactions at various periods
-        timeseries.transactions_from_n_to_m_days(
-          number_of_days, number_of_days + 30).outgoing_transactions()().sum().amount
-        # The sum of outgoing transactions on the 30 days after the cut date `n`, that is the label to predict
-      )
-      for timeseries in timeseries_list
-    ],
+    [compute_timeseries_features(timeseries, number_of_days)
+     for timeseries in timeseries_list
+     ],
     columns=[
       'incoming_sum',
       'outgoing_sum',
       'estimated_balance',
       'mean_balance',
-      *[f'income_{period}_rolling_mean' for period in periods],
-      *[f'outcome_{period}_rolling_mean' for period in periods],
+      *[f'income_{period}_rolling_mean' for period in PERIODS],
+      *[f'outcome_{period}_rolling_mean' for period in PERIODS],
       'outgoing_to_predict'
     ]
   ).dropna()
@@ -180,6 +188,15 @@ def train(transactions: List[List[Transaction]], accounts: List[Account]) -> dic
   }
 
 
+def predict(transactions: List[Transaction], account: Account) -> float:
+  estimator = load('estimator.joblib')
+  transaction_timeseries = transaction_to_timeseries(transactions, account)
+  prediction = estimator.predict(
+    pd.DataFrame(build_training_set([transaction_timeseries],
+                                transaction_timeseries.transaction_date_span.days
+                                )).drop('outgoing_to_predict', axis=1).to_numpy()
+  )[0]
+  return prediction
 
 
 app = FastAPI()
@@ -193,12 +210,10 @@ async def train_root(train_body: RequestTrain):
 
 @app.post("/predict")
 async def predict_root(predict_body: RequestPredict):
-    transactions = predict_body.transactions
-    account = predict_body.account
+  transactions = predict_body.transactions
+  account = predict_body.account
 
-    # Call your prediction function/code here
-    ####################################################
-    # predicted_amount = predict(transactions, account)
+  predicted_amount = predict(transactions, account)
 
     # Return predicted amount
-    return {"predicted_amount": 0}
+  return {"predicted_amount": predicted_amount}
